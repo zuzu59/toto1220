@@ -129,10 +129,11 @@ export async function unlockApp(passphrase) {
   }
 }
 
-export function lockApp() {
+export function lockApp(reason = 'Application verrouillée') {
   masterKey = null
   state.unlocked = false
   state.unlockUntil = 0
+  state.notice = reason
 }
 
 export function touchActivity() {
@@ -145,8 +146,7 @@ export function startAutoLockMonitor() {
   if (lockTicker) return
   lockTicker = window.setInterval(() => {
     if (state.unlocked && now() > state.unlockUntil) {
-      lockApp()
-      state.notice = 'Application verrouillée automatiquement'
+      lockApp('Application verrouillée automatiquement')
     }
   }, 15000)
 }
