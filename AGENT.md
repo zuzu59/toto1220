@@ -2,11 +2,14 @@
 
 ## Flow de travail à respecter
 
-1. Modifier le code.
-2. Vérifier / builder le projet.
-3. Faire un commit atomique.
-4. Pousser immédiatement sur GitHub.
-5. Générer / conserver le build statique dans `docs/` pour GitHub Pages.
+1. Lire `kanban-a-faire.md` avant de commencer.
+2. Modifier le code.
+3. Déplacer chaque tâche terminée dans `kanban-termine.md`.
+4. Vérifier / builder le projet.
+5. Faire un commit atomique.
+6. Pousser immédiatement sur GitHub.
+7. Générer / conserver le build statique dans `docs/` pour GitHub Pages.
+8. Quand `kanban-a-faire.md` est vide, faire un commit et pousser pour déclencher le déploiement.
 
 ## Règles du projet
 
