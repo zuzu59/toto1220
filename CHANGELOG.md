@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.0.2 — 2026-06-06 13:06
+- Bump automatique de version.
+- Release et changelog mis à jour par GitHub Actions.
+
 ## 0.0.1 — 2026-06-06  
 - Base PWA mobile-first pour gérer les services.
 - CRUD records + tags.
