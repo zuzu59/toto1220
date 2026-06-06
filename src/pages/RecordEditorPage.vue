@@ -17,6 +17,7 @@ const route = useRoute()
 const router = useRouter()
 const isEditing = ref(route.name === 'record-new')
 const loading = ref(true)
+const copiedKey = ref('')
 const secretPayloads = reactive({
   ssh1Password: null,
   ssh2Password: null,
@@ -135,6 +136,15 @@ function requestUnlock() {
   window.dispatchEvent(new CustomEvent('zservices-unlock-request'))
 }
 
+async function copyText(key, value) {
+  if (!value) return
+  await navigator.clipboard.writeText(value)
+  copiedKey.value = key
+  window.setTimeout(() => {
+    if (copiedKey.value === key) copiedKey.value = ''
+  }, 1500)
+}
+
 watch(
   () => route.params.id,
   async () => {
@@ -178,13 +188,37 @@ onMounted(loadRecord)
         <div><span class="field-label">URL</span><div>{{ form.url || '—' }}</div></div>
         <div><span class="field-label">Description</span><div>{{ form.description || '—' }}</div></div>
         <div><span class="field-label">Tags</span><div>{{ tagNames(form) || '—' }}</div></div>
-        <div><span class="field-label">SSH1</span><div>{{ form.ssh1String || '—' }}</div></div>
+        <div>
+          <span class="field-label">SSH1</span>
+          <div class="copy-field">
+            <div class="copy-value">{{ form.ssh1String || '—' }}</div>
+            <button class="ghost-button secret-copy" type="button" :disabled="!form.ssh1String" @click="copyText('ssh1', form.ssh1String)">{{ copiedKey === 'ssh1' ? 'Copié' : 'Copier' }}</button>
+          </div>
+        </div>
         <div><span class="field-label">SSH1 password</span><SecretDisplay :value="form.ssh1Password" :has-value="Boolean(secretPayloads.ssh1Password)" :locked="!state.unlocked" @request-unlock="requestUnlock" /></div>
-        <div><span class="field-label">SSH2</span><div>{{ form.ssh2String || '—' }}</div></div>
+        <div>
+          <span class="field-label">SSH2</span>
+          <div class="copy-field">
+            <div class="copy-value">{{ form.ssh2String || '—' }}</div>
+            <button class="ghost-button secret-copy" type="button" :disabled="!form.ssh2String" @click="copyText('ssh2', form.ssh2String)">{{ copiedKey === 'ssh2' ? 'Copié' : 'Copier' }}</button>
+          </div>
+        </div>
         <div><span class="field-label">SSH2 password</span><SecretDisplay :value="form.ssh2Password" :has-value="Boolean(secretPayloads.ssh2Password)" :locked="!state.unlocked" @request-unlock="requestUnlock" /></div>
-        <div><span class="field-label">HTML1</span><div>{{ form.html1String || '—' }}</div></div>
+        <div>
+          <span class="field-label">HTML1</span>
+          <div class="copy-field">
+            <div class="copy-value">{{ form.html1String || '—' }}</div>
+            <button class="ghost-button secret-copy" type="button" :disabled="!form.html1String" @click="copyText('html1', form.html1String)">{{ copiedKey === 'html1' ? 'Copié' : 'Copier' }}</button>
+          </div>
+        </div>
         <div><span class="field-label">HTML1 password</span><SecretDisplay :value="form.html1Password" :has-value="Boolean(secretPayloads.html1Password)" :locked="!state.unlocked" @request-unlock="requestUnlock" /></div>
-        <div><span class="field-label">HTML2</span><div>{{ form.html2String || '—' }}</div></div>
+        <div>
+          <span class="field-label">HTML2</span>
+          <div class="copy-field">
+            <div class="copy-value">{{ form.html2String || '—' }}</div>
+            <button class="ghost-button secret-copy" type="button" :disabled="!form.html2String" @click="copyText('html2', form.html2String)">{{ copiedKey === 'html2' ? 'Copié' : 'Copier' }}</button>
+          </div>
+        </div>
         <div><span class="field-label">HTML2 password</span><SecretDisplay :value="form.html2Password" :has-value="Boolean(secretPayloads.html2Password)" :locked="!state.unlocked" @request-unlock="requestUnlock" /></div>
         <div class="full-width"><span class="field-label">Note</span><div>{{ form.note || '—' }}</div></div>
         <div><span class="field-label">Créé</span><div>{{ form.createdAt ? new Date(form.createdAt).toLocaleString('fr-FR') : '—' }}</div></div>
