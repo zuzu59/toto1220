@@ -22,6 +22,10 @@ export function getTagDate(tag) {
   }
 }
 
+export function getLatestVersionTag(tags = getVersionTags()) {
+  return [...tags].reverse().find((tag) => /^v\d+\.\d+\.\d+$/.test(tag)) || ''
+}
+
 export function getPreviousTag(tag, tags = getVersionTags()) {
   const index = tags.indexOf(tag)
   return index > 0 ? tags[index - 1] : ''
