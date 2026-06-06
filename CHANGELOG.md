@@ -1,5 +1,8 @@
 # Changelog
 
+## 0.0.11 — 2026-06-06 13:55
+- fixe: Corriger le message de verrouillage
+
 ## 0.0.10 — 2026-06-06 13:48
 - doc: Rendre le changelog lisible
 
