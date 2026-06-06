@@ -1,6 +1,6 @@
 <script setup>
 import { onMounted, ref } from 'vue'
-import { APP_VERSION, GITHUB_CHANGES_URL, GITHUB_PROFILE_URL, GITHUB_RELEASES_URL, GITHUB_REPO_URL } from '../constants'
+import { APP_VERSION, GITHUB_CHANGES_URL, GITHUB_PROFILE_URL, GITHUB_RELEASES_URL, GITHUB_REPO, GITHUB_REPO_URL, GITHUB_USER } from '../constants'
 import { compareSemver } from '../services/version'
 import { state } from '../state'
 
@@ -10,7 +10,7 @@ async function checkRelease() {
   checking.value = true
   state.latestReleaseError = ''
   try {
-    const response = await fetch('https://api.github.com/repos/zuzu59/z-services/releases/latest')
+    const response = await fetch(`https://api.github.com/repos/${GITHUB_USER}/${GITHUB_REPO}/releases/latest`)
     if (!response.ok) throw new Error('GitHub indisponible')
     const data = await response.json()
     state.latestRelease = data.tag_name?.replace(/^v/, '') || null
@@ -34,9 +34,9 @@ onMounted(checkRelease)
     <div class="record-card stacked">
       <a :href="GITHUB_PROFILE_URL" target="_blank" rel="noreferrer">GitHub.com/zuzu59</a>
       <a :href="GITHUB_REPO_URL" target="_blank" rel="noreferrer">Dépôt de l’application</a>
-      <button class="ghost-button" type="button" @click="window.open(GITHUB_CHANGES_URL, '_blank')">
+      <a class="ghost-button" :href="GITHUB_CHANGES_URL" target="_blank" rel="noreferrer">
         Version {{ APP_VERSION }}
-      </button>
+      </a>
       <p v-if="checking">Vérification des releases...</p>
       <p v-else-if="state.latestRelease && compareSemver(state.latestRelease, APP_VERSION) > 0" class="warning-text">
         Nouvelle version disponible : {{ state.latestRelease }}

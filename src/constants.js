@@ -4,5 +4,5 @@ export const GITHUB_REPO = typeof __GITHUB_REPO__ === 'string' ? __GITHUB_REPO__
 export const GITHUB_REPO_URL = `https://github.com/${GITHUB_USER}/${GITHUB_REPO}`
 export const GITHUB_PROFILE_URL = `https://github.com/${GITHUB_USER}`
 export const GITHUB_RELEASES_URL = `${GITHUB_REPO_URL}/releases`
-export const GITHUB_CHANGES_URL = `${GITHUB_REPO_URL}/blob/main/CHANGELOG.md`
+export const GITHUB_CHANGES_URL = `${GITHUB_REPO_URL}/blob/master/CHANGELOG.md`
 export const APP_TITLE = 'Z-Services'
