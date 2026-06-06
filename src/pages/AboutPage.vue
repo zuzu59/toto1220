@@ -1,44 +1,34 @@
 <script setup>
-import { onMounted, ref } from 'vue'
-import { APP_VERSION, GITHUB_CHANGES_URL, GITHUB_PROFILE_URL, GITHUB_RELEASES_URL, GITHUB_REPO, GITHUB_REPO_URL, GITHUB_USER } from '../constants'
+import { computed, onMounted, ref } from 'vue'
+import { APP_VERSION, GITHUB_CHANGES_URL, GITHUB_PROFILE_URL, GITHUB_RELEASES_URL, GITHUB_REPO_URL } from '../constants'
+import { getLatestGithubReleaseVersion } from '../services/github'
 import { compareSemver } from '../services/version'
 import { state } from '../state'
 
 const checking = ref(false)
+const releaseStatus = ref('loading')
+const releaseMessage = ref('')
 
-async function fetchLatestVersion() {
-  const endpoints = [
-    `https://api.github.com/repos/${GITHUB_USER}/${GITHUB_REPO}/releases/latest`,
-    `https://api.github.com/repos/${GITHUB_USER}/${GITHUB_REPO}/tags?per_page=1`
-  ]
-
-  for (const endpoint of endpoints) {
-    const response = await fetch(endpoint, { cache: 'no-store' })
-    if (!response.ok) {
-      if (response.status === 404) {
-        continue
-      }
-      continue
-    }
-
-    const data = await response.json()
-    if (Array.isArray(data) && data.length > 0) {
-      return data[0]?.name?.replace(/^v/, '') || null
-    }
-    return data.tag_name?.replace(/^v/, '') || null
-  }
-
-  return null
-}
+const hasNewRelease = computed(() => state.latestRelease && compareSemver(state.latestRelease, APP_VERSION) > 0)
 
 async function checkRelease() {
   checking.value = true
-  state.latestReleaseError = ''
+  releaseMessage.value = ''
+  releaseStatus.value = 'loading'
   try {
-    state.latestRelease = await fetchLatestVersion()
+    state.latestRelease = await getLatestGithubReleaseVersion()
+    if (!state.latestRelease) {
+      releaseStatus.value = 'unknown'
+      releaseMessage.value = 'Impossible de vérifier les releases.'
+      return
+    }
+
+    releaseStatus.value = hasNewRelease.value ? 'new' : 'up-to-date'
+    releaseMessage.value = hasNewRelease.value ? `Nouvelle version disponible : ${state.latestRelease}` : 'Aucune nouvelle release.'
   } catch (error) {
-    state.latestReleaseError = ''
     state.latestRelease = null
+    releaseStatus.value = 'unknown'
+    releaseMessage.value = error?.message || 'Impossible de vérifier les releases.'
   } finally {
     checking.value = false
   }
@@ -61,13 +51,12 @@ onMounted(checkRelease)
         Version {{ APP_VERSION }}
       </a>
       <p v-if="checking">Vérification des releases...</p>
-      <p v-if="state.latestRelease && compareSemver(state.latestRelease, APP_VERSION) > 0" class="warning-text">
-        Nouvelle version disponible : {{ state.latestRelease }}
-      </p>
-      <a v-if="state.latestRelease && compareSemver(state.latestRelease, APP_VERSION) > 0" class="ghost-button" :href="GITHUB_RELEASES_URL" target="_blank" rel="noreferrer">
+      <p v-else-if="releaseStatus === 'new'" class="warning-text">{{ releaseMessage }}</p>
+      <a v-if="releaseStatus === 'new'" class="ghost-button" :href="GITHUB_RELEASES_URL" target="_blank" rel="noreferrer">
         Voir le changelog
       </a>
-      <p v-else class="muted">Aucune nouvelle release.</p>
+      <p v-else-if="releaseStatus === 'up-to-date'" class="muted">{{ releaseMessage }}</p>
+      <p v-else class="muted">{{ releaseMessage || 'Impossible de vérifier les releases.' }}</p>
     </div>
   </section>
 </template>
