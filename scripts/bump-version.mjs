@@ -1,5 +1,5 @@
 import { readFileSync, writeFileSync } from 'node:fs'
-import { buildReleaseEntry, getCommitSubjects, getPreviousTag, insertReleaseEntry } from './changelog-utils.mjs'
+import { buildReleaseEntry, getCommits, getPreviousTag, insertReleaseEntry } from './changelog-utils.mjs'
 
 const pkgPath = new URL('../package.json', import.meta.url)
 const changelogPath = new URL('../CHANGELOG.md', import.meta.url)
@@ -23,8 +23,8 @@ writeFileSync(lockPath, `${JSON.stringify(lock, null, 2)}\n`)
 
 const previousTag = getPreviousTag()
 const range = previousTag ? `${previousTag}..HEAD` : ''
-const subjects = getCommitSubjects(range)
-const entry = buildReleaseEntry(nextVersion, stamp, subjects.length ? subjects : ['Mise à jour de maintenance.'])
+const commits = getCommits(range)
+const entry = buildReleaseEntry(nextVersion, stamp, commits.length ? commits : [{ subject: 'Mise à jour de maintenance.', body: '' }])
 const changelog = readFileSync(changelogPath, 'utf8')
 writeFileSync(changelogPath, `${insertReleaseEntry(changelog, entry)}\n`)
 writeFileSync(new URL('../RELEASE_NOTES.md', import.meta.url), `${entry}\n`)

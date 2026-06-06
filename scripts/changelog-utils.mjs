@@ -16,9 +16,9 @@ export function getVersionTags() {
 
 export function getTagDate(tag) {
   try {
-    return execFileSync('git', ['log', '-1', '--format=%cs', tag], { encoding: 'utf8' }).trim()
+    return execFileSync('git', ['log', '-1', '--format=%ci', tag], { encoding: 'utf8' }).trim().slice(0, 16).replace('T', ' ')
   } catch {
-    return new Date().toISOString().slice(0, 10)
+    return new Date().toISOString().slice(0, 16).replace('T', ' ')
   }
 }
 
@@ -27,13 +27,26 @@ export function getPreviousTag(tag, tags = getVersionTags()) {
   return index > 0 ? tags[index - 1] : ''
 }
 
-export function getCommitSubjects(range) {
+export function getCommits(range) {
   if (!range) {
     return []
   }
 
-  const output = execFileSync('git', ['log', '--reverse', '--format=%s', '--no-merges', range], { encoding: 'utf8' }).trim()
-  return output ? output.split('\n').map((line) => line.trim()).filter(Boolean) : []
+  const output = execFileSync('git', ['log', '--reverse', '--no-merges', '--format=%H%x1f%s%x1f%b%x1e', range], { encoding: 'utf8' }).trim()
+  if (!output) return []
+
+  return output
+    .split('\x1e')
+    .map((record) => record.trim())
+    .filter(Boolean)
+    .map((record) => {
+      const [hash = '', subject = '', body = ''] = record.split('\x1f')
+      return { hash: hash.trim(), subject: subject.trim(), body: body.trimEnd() }
+    })
+}
+
+export function getCommitSubjects(range) {
+  return getCommits(range).map((commit) => commit.subject)
 }
 
 export function classifySubject(subject) {
@@ -46,14 +59,26 @@ export function classifySubject(subject) {
   return { section: 'Changed', text: String(subject || '').trim() }
 }
 
-export function buildReleaseEntry(version, date, subjects) {
+function formatCommitBody(body) {
+  const lines = String(body || '')
+    .split('\n')
+    .map((line) => line.trim())
+    .filter(Boolean)
+
+  if (!lines.length) return []
+  return lines.map((line) => `  - ${line.replace(/^[*-]\s*/, '')}`)
+}
+
+export function buildReleaseEntry(version, date, commits) {
   const sections = new Map()
 
-  for (const subject of subjects) {
-    if (/^change:\s*bump version/i.test(subject)) continue
+  for (const commit of commits) {
+    const subject = typeof commit === 'string' ? commit : commit?.subject
+    if (!subject || /^change:\s*bump version/i.test(subject)) continue
     const { section, text } = classifySubject(subject)
+    const item = { text, body: typeof commit === 'string' ? [] : formatCommitBody(commit.body) }
     if (!sections.has(section)) sections.set(section, [])
-    sections.get(section).push(text)
+    sections.get(section).push(item)
   }
 
   const order = ['Added', 'Changed', 'Fixed', 'Removed']
@@ -62,7 +87,10 @@ export function buildReleaseEntry(version, date, subjects) {
     const items = sections.get(section)
     if (items?.length) {
       lines.push(`### ${section}`)
-      items.forEach((item) => lines.push(`- ${item}`))
+      items.forEach((item) => {
+        lines.push(`- ${item.text}`)
+        lines.push(...item.body)
+      })
       lines.push('')
     }
   })
