@@ -1,38 +1,41 @@
 # Changelog
 
 ## 0.0.9 — 2026-06-06 13:40
-- Bump automatique de version.
-- Release et changelog mis à jour par GitHub Actions.
+- fixe: Corriger le déploiement GitHub Pages
 
 ## 0.0.8 — 2026-06-06 13:34
-- Bump automatique de version.
-- Release et changelog mis à jour par GitHub Actions.
+- fixe: Centraliser les URLs GitHub
 
 ## 0.0.7 — 2026-06-06 13:29
-- Bump automatique de version.
-- Release et changelog mis à jour par GitHub Actions.
+- fixe: Ajuster le retour de la page About
+- fixe: Régénérer la page About
 
 ## 0.0.6 — 2026-06-06 13:24
-- Bump automatique de version.
-- Release et changelog mis à jour par GitHub Actions.
+- fixe: Rendre About plus robuste
+- fixe: Régénérer la page About
 
 ## 0.0.5 — 2026-06-06 13:19
-- Bump automatique de version.
-- Release et changelog mis à jour par GitHub Actions.
+- fixe: Corriger la page About
+- fixe: Stabiliser la page About
 
 ## 0.0.4 — 2026-06-06 13:13
-- Bump automatique de version.
-- Release et changelog mis à jour par GitHub Actions.
+- doc: Décrire le flow de travail
 
 ## 0.0.3 — 2026-06-06 13:11
-- Bump automatique de version.
-- Release et changelog mis à jour par GitHub Actions.
+- change: Afficher un seul bouton de session
 
 ## 0.0.2 — 2026-06-06 13:06
-- Bump automatique de version.
-- Release et changelog mis à jour par GitHub Actions.
+- change: Ajouter la copie des mots de passe
+- change: Créer les releases GitHub
+- fixe: Corriger la capture de version GitHub Actions
+- change: Ajouter les releases GitHub
+- change: Préparer le déploiement Pages
+- change: Implémenter la PWA de gestion
+- refact: améiorations du prompt
+- refact: refactorisation du readme
+- new: 1ère création du cahier des charges
 
-## 0.0.1 — 2026-06-06  
+## 0.0.1 — 2026-06-06
 - Base PWA mobile-first pour gérer les services.
 - CRUD records + tags.
 - Recherche full-text AND.
