@@ -1,5 +1,8 @@
 # Changelog
 
+## 0.0.13 — 2026-06-06 14:10
+- change: Ajouter la copie des identifiants
+
 ## 0.0.12 — 2026-06-06 14:02
 - fixe: Corriger le verrouillage manuel
 
