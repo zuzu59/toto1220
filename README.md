@@ -13,6 +13,12 @@ npm install
 npm run dev
 ```
 
+## Déploiement GitHub Pages
+- Build généré dans `docs/`
+- Sur GitHub Pages, choisir **Deploy from a branch**
+- Branch : `master` (ou la branche active)
+- Folder : `/docs`
+
 ## Convention de commit
 `new|change|fixe|refact|del[:(scope)] description`
 

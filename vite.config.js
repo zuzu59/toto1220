@@ -7,7 +7,10 @@ const require = createRequire(import.meta.url)
 const pkg = require('./package.json')
 
 export default defineConfig({
-  base: '/z-services/',
+  base: './',
+  build: {
+    outDir: 'docs'
+  },
   define: {
     __APP_VERSION__: JSON.stringify(pkg.version),
     __GITHUB_USER__: JSON.stringify('zuzu59'),
@@ -25,11 +28,11 @@ export default defineConfig({
         theme_color: '#0f172a',
         background_color: '#0f172a',
         display: 'standalone',
-        scope: '/z-services/',
-        start_url: '/z-services/',
+        scope: './',
+        start_url: './',
         icons: [
           {
-            src: '/z-services/pwa-icon.svg',
+            src: 'pwa-icon.svg',
             sizes: 'any',
             type: 'image/svg+xml'
           }
