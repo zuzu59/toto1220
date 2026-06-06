@@ -61,12 +61,13 @@ onMounted(checkRelease)
         Version {{ APP_VERSION }}
       </a>
       <p v-if="checking">Vérification des releases...</p>
-      <p v-else-if="state.latestRelease && compareSemver(state.latestRelease, APP_VERSION) > 0" class="warning-text">
+      <p v-if="state.latestRelease && compareSemver(state.latestRelease, APP_VERSION) > 0" class="warning-text">
         Nouvelle version disponible : {{ state.latestRelease }}
-        <a :href="GITHUB_RELEASES_URL" target="_blank" rel="noreferrer">Voir le changelog</a>
       </p>
-      <p v-else-if="state.latestRelease">Vous êtes à jour.</p>
-      <p v-else class="muted">Aucune release détectée pour le moment.</p>
+      <a v-if="state.latestRelease && compareSemver(state.latestRelease, APP_VERSION) > 0" class="ghost-button" :href="GITHUB_RELEASES_URL" target="_blank" rel="noreferrer">
+        Voir le changelog
+      </a>
+      <p v-else class="muted">Aucune nouvelle release.</p>
     </div>
   </section>
 </template>
