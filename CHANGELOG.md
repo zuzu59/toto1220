@@ -6,6 +6,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/fr/1.0.0/).
 
 ## [Unreleased]
 
+## [0.0.17] - 2026-06-06
+### Changed
+- Mise à jour de maintenance.
+
 ## [0.0.16] - 2026-06-06
 ### Changed
 - change: Compléter la vue record et le menu
@@ -84,3 +88,4 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/fr/1.0.0/).
 - change: Implémenter la PWA de gestion
 - change: Préparer le déploiement Pages
 - change: Ajouter les releases GitHub
+
