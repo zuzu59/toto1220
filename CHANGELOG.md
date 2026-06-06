@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.0.3 — 2026-06-06 13:11
+- Bump automatique de version.
+- Release et changelog mis à jour par GitHub Actions.
+
 ## 0.0.2 — 2026-06-06 13:06
 - Bump automatique de version.
 - Release et changelog mis à jour par GitHub Actions.
