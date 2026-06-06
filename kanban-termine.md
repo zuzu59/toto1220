@@ -7,3 +7,5 @@
 * je veux que les boutons du hamburger soit plus petits, juste la taille du titre maximale du bouton
 * je veux la date et heure dans le changelog
 * je veux le détail de chaque commit dans le changelog comme par exemple je veux voir le détail de ce commit dans le changelog. Autrement juste une ligne cela ne me sert à rien !
+* je veux que les releases GitHub soient utiles et détaillées
+* je veux que la hauteur des boutons dans About soit égale au texte à l'intérieur

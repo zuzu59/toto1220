@@ -59,14 +59,14 @@ export function classifySubject(subject) {
   return { section: 'Changed', text: String(subject || '').trim() }
 }
 
-function formatCommitBody(body) {
+function formatCommitBody(body, indent = '  - ') {
   const lines = String(body || '')
     .split('\n')
     .map((line) => line.trim())
     .filter(Boolean)
 
   if (!lines.length) return []
-  return lines.map((line) => `  - ${line.replace(/^[*-]\s*/, '')}`)
+  return lines.map((line) => `${indent}${line.replace(/^[*-]\s*/, '')}`)
 }
 
 export function buildReleaseEntry(version, date, commits) {
@@ -97,6 +97,32 @@ export function buildReleaseEntry(version, date, commits) {
 
   if (lines[lines.length - 1] !== '') lines.push('')
   return lines.join('\n')
+}
+
+export function buildGithubReleaseNotes(version, date, commits) {
+  const lines = [`# Release v${version}`, '', `Date: ${date}`, '']
+  const filtered = commits.filter((commit) => {
+    const subject = typeof commit === 'string' ? commit : commit?.subject
+    return subject && !/^change:\s*bump version/i.test(subject)
+  })
+
+  if (!filtered.length) {
+    lines.push('- Mise à jour de maintenance.')
+    return lines.join('\n')
+  }
+
+  for (const commit of filtered) {
+    const subject = commit.subject || String(commit)
+    const shortHash = String(commit.hash || '').slice(0, 7)
+    lines.push(`## ${shortHash} — ${subject}`)
+    const bodyLines = formatCommitBody(commit.body, '- ')
+    if (bodyLines.length) {
+      lines.push(...bodyLines)
+    }
+    lines.push('')
+  }
+
+  return lines.join('\n').trimEnd()
 }
 
 export function buildKeepAChangelog(contents) {

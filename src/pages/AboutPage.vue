@@ -55,12 +55,12 @@ watch(
     <div class="record-card stacked">
       <a :href="GITHUB_PROFILE_URL" target="_blank" rel="noreferrer">GitHub.com/zuzu59</a>
       <a :href="GITHUB_REPO_URL" target="_blank" rel="noreferrer">Dépôt de l’application</a>
-      <a class="ghost-button" :href="GITHUB_CHANGES_URL" target="_blank" rel="noreferrer">
+      <a class="ghost-button about-button" :href="GITHUB_CHANGES_URL" target="_blank" rel="noreferrer">
         Version {{ APP_VERSION }}
       </a>
       <p v-if="checking">Vérification des releases...</p>
       <p v-else-if="releaseStatus === 'new'" class="warning-text">{{ releaseMessage }}</p>
-      <a v-if="releaseStatus === 'new'" class="ghost-button" :href="GITHUB_RELEASES_URL" target="_blank" rel="noreferrer">
+      <a v-if="releaseStatus === 'new'" class="ghost-button about-button" :href="GITHUB_RELEASES_URL" target="_blank" rel="noreferrer">
         Voir le changelog
       </a>
       <p v-else-if="releaseStatus === 'up-to-date'" class="muted">{{ releaseMessage }}</p>

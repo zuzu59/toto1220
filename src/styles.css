@@ -50,6 +50,15 @@ button, input, textarea { font: inherit; }
 .primary-button { background: var(--accent); color: #082f49; border-color: transparent; font-weight: 700; }
 .danger-button { background: rgba(239, 68, 68, 0.15); color: #fecaca; border-color: rgba(239, 68, 68, 0.35); }
 .ghost-button, .icon-button { background: rgba(15, 23, 42, 0.7); }
+.about-button {
+  display: inline-flex;
+  align-items: center;
+  align-self: start;
+  width: fit-content;
+  padding-top: 0.08rem;
+  padding-bottom: 0.08rem;
+  line-height: 1;
+}
 .primary-button:disabled, .ghost-button:disabled { opacity: 0.5; cursor: not-allowed; }
 .search-input, .text-input {
   width: 100%;
