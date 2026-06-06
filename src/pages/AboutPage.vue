@@ -6,16 +6,39 @@ import { state } from '../state'
 
 const checking = ref(false)
 
+async function fetchLatestVersion() {
+  const endpoints = [
+    `https://api.github.com/repos/${GITHUB_USER}/${GITHUB_REPO}/releases/latest`,
+    `https://api.github.com/repos/${GITHUB_USER}/${GITHUB_REPO}/tags?per_page=1`
+  ]
+
+  for (const endpoint of endpoints) {
+    const response = await fetch(endpoint, { cache: 'no-store' })
+    if (!response.ok) {
+      if (response.status === 404) {
+        continue
+      }
+      continue
+    }
+
+    const data = await response.json()
+    if (Array.isArray(data) && data.length > 0) {
+      return data[0]?.name?.replace(/^v/, '') || null
+    }
+    return data.tag_name?.replace(/^v/, '') || null
+  }
+
+  return null
+}
+
 async function checkRelease() {
   checking.value = true
   state.latestReleaseError = ''
   try {
-    const response = await fetch(`https://api.github.com/repos/${GITHUB_USER}/${GITHUB_REPO}/releases/latest`)
-    if (!response.ok) throw new Error('GitHub indisponible')
-    const data = await response.json()
-    state.latestRelease = data.tag_name?.replace(/^v/, '') || null
+    state.latestRelease = await fetchLatestVersion()
   } catch (error) {
-    state.latestReleaseError = error?.message || 'Impossible de vérifier les releases'
+    state.latestReleaseError = ''
+    state.latestRelease = null
   } finally {
     checking.value = false
   }
@@ -43,7 +66,7 @@ onMounted(checkRelease)
         <a :href="GITHUB_RELEASES_URL" target="_blank" rel="noreferrer">Voir le changelog</a>
       </p>
       <p v-else-if="state.latestRelease">Vous êtes à jour.</p>
-      <p v-if="state.latestReleaseError" class="muted">{{ state.latestReleaseError }}</p>
+      <p v-else class="muted">Aucune release détectée pour le moment.</p>
     </div>
   </section>
 </template>
