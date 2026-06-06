@@ -77,7 +77,7 @@ watch(
       />
       <div class="actions">
         <button v-if="state.unlocked" class="ghost-button" type="button" @click="lockApp">Verrouiller</button>
-        <button class="primary-button" type="button" @click="openUnlock">Déverrouiller</button>
+        <button v-else class="primary-button" type="button" @click="openUnlock">Déverrouiller</button>
         <RouterLink v-if="isRecordsPage" class="primary-button" to="/records/new">+ Nouveau</RouterLink>
       </div>
     </header>
