@@ -6,6 +6,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/fr/1.0.0/).
 
 ## [Unreleased]
 
+## [0.0.20] - 2026-06-06 16:42
+### Changed
+- Mise à jour de maintenance.
+
 ## [0.0.19] - 2026-06-06 16:36
 ### Changed
 - Mise à jour de maintenance.
@@ -212,6 +216,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/fr/1.0.0/).
   - Rebuild du dossier docs/ pour le déploiement Pages depuis une branche.
   - Création d’un tag vX.Y.Z.
   - Publication d’une release GitHub à partir du tag.
+
 
 
 
