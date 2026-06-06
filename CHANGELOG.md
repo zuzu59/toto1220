@@ -1,5 +1,8 @@
 # Changelog
 
+## 0.0.15 — 2026-06-06 15:21
+- doc: Ajouter le suivi kanban
+
 ## 0.0.14 — 2026-06-06 14:19
 - fixe: Rafraîchir About à chaque ouverture
 
