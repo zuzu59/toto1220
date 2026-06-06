@@ -26,7 +26,9 @@ export async function getLatestGithubReleaseVersion() {
   const endpoints = [github.api.latestReleaseUrl, github.api.tagsUrl]
 
   for (const endpoint of endpoints) {
-    const response = await fetch(endpoint, { cache: 'no-store' })
+    const url = new URL(endpoint)
+    url.searchParams.set('_ts', String(Date.now()))
+    const response = await fetch(url, { cache: 'no-store' })
     if (!response.ok) {
       continue
     }

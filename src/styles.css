@@ -178,6 +178,8 @@ button, input, textarea { font: inherit; }
 .secret-copy {
   flex: 0 0 auto;
   white-space: nowrap;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.92rem;
 }
 .secret-display.revealed {
   border-style: solid;

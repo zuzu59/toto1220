@@ -1,10 +1,12 @@
 <script setup>
-import { computed, onMounted, ref } from 'vue'
+import { computed, ref, watch } from 'vue'
+import { useRoute } from 'vue-router'
 import { APP_VERSION, GITHUB_CHANGES_URL, GITHUB_PROFILE_URL, GITHUB_RELEASES_URL, GITHUB_REPO_URL } from '../constants'
 import { getLatestGithubReleaseVersion } from '../services/github'
 import { compareSemver } from '../services/version'
 import { state } from '../state'
 
+const route = useRoute()
 const checking = ref(false)
 const releaseStatus = ref('loading')
 const releaseMessage = ref('')
@@ -34,7 +36,13 @@ async function checkRelease() {
   }
 }
 
-onMounted(checkRelease)
+watch(
+  () => route.fullPath,
+  () => {
+    checkRelease()
+  },
+  { immediate: true }
+)
 </script>
 
 <template>
