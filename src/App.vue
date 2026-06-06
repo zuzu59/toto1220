@@ -86,7 +86,8 @@ watch(
       </div>
     </header>
 
-    <aside class="drawer" :class="{ open: state.drawerOpen }">
+    <div v-if="state.drawerOpen" class="drawer-overlay" @click="closeDrawer"></div>
+    <aside class="drawer" :class="{ open: state.drawerOpen }" @click.stop>
       <RouterLink to="/" class="drawer-link">Records</RouterLink>
       <RouterLink to="/tags" class="drawer-link">Tags</RouterLink>
       <RouterLink to="/tools" class="drawer-link">Import / Export</RouterLink>
