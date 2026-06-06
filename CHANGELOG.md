@@ -1,5 +1,8 @@
 # Changelog
 
+## 0.0.14 — 2026-06-06 14:19
+- fixe: Rafraîchir About à chaque ouverture
+
 ## 0.0.13 — 2026-06-06 14:10
 - change: Ajouter la copie des identifiants
 
