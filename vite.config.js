@@ -14,7 +14,7 @@ export default defineConfig({
   define: {
     __APP_VERSION__: JSON.stringify(pkg.version),
     __GITHUB_USER__: JSON.stringify('zuzu59'),
-    __GITHUB_REPO__: JSON.stringify('z-services')
+    __GITHUB_REPO__: JSON.stringify('toto1220')
   },
   plugins: [
     vue(),
@@ -39,7 +39,7 @@ export default defineConfig({
         ]
       },
       workbox: {
-        navigateFallback: '/z-services/index.html'
+        navigateFallback: '/toto1220/index.html'
       }
     })
   ],
