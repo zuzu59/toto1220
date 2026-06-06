@@ -46,6 +46,10 @@ function onUnlockRequest() {
   showUnlock.value = true
 }
 
+function handleLock() {
+  lockApp()
+}
+
 onMounted(() => {
   window.addEventListener('zservices-unlock-request', onUnlockRequest)
 })
@@ -76,7 +80,7 @@ watch(
         aria-label="Recherche"
       />
       <div class="actions">
-        <button v-if="state.unlocked" class="ghost-button" type="button" @click="lockApp">Verrouiller</button>
+        <button v-if="state.unlocked" class="ghost-button" type="button" @click="handleLock">Verrouiller</button>
         <button v-else class="primary-button" type="button" @click="openUnlock">Déverrouiller</button>
         <RouterLink v-if="isRecordsPage" class="primary-button" to="/records/new">+ Nouveau</RouterLink>
       </div>
