@@ -1,5 +1,8 @@
 # Changelog
 
+## 0.0.12 — 2026-06-06 14:02
+- fixe: Corriger le verrouillage manuel
+
 ## 0.0.11 — 2026-06-06 13:55
 - fixe: Corriger le message de verrouillage
 
