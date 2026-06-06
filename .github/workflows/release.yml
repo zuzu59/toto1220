@@ -9,7 +9,7 @@ permissions:
 
 jobs:
   bump:
-    if: github.actor != 'github-actions[bot]'
+    if: github.actor != 'github-actions[bot]' && !contains(github.event.head_commit.message, 'docs: synchroniser Pages')
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -32,6 +32,13 @@ jobs:
         run: |
           VERSION=$(node -p "require('./package.json').version")
           echo "version=$VERSION" >> "$GITHUB_OUTPUT"
+      - name: Commit publication
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add -A package.json package-lock.json CHANGELOG.md docs
+          git commit -m "docs: publier la version ${{ steps.version.outputs.version }}" -m "Publication automatique de la version, génération des docs et préparation de la release."
+          git push origin HEAD:${{ github.ref_name }}
       - name: Push tag
         run: |
           git tag "v${{ steps.version.outputs.version }}"
