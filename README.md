@@ -1,8 +1,19 @@
 # z-services
-zf260605.1135
 
+PWA offline pour gérer des services auto-hébergés.
 
-Petite appli pour smartphone PWA offline qui permet de gérer mes services hébergés chez moi
+## Stack
+- Vite + Vue 3
+- Dexie.js
+- PWA via `vite-plugin-pwa`
 
-Pour l'instant le dev se trouve dans la branche V1
+## Lancer
+```bash
+npm install
+npm run dev
+```
 
+## Convention de commit
+`new|change|fixe|refact|del[:(scope)] description`
+
+Pour le contrôle local : `git config core.hooksPath .githooks`.
