@@ -1,5 +1,8 @@
 # Changelog
 
+## 0.0.10 — 2026-06-06 13:48
+- doc: Rendre le changelog lisible
+
 ## 0.0.9 — 2026-06-06 13:40
 - fixe: Corriger le déploiement GitHub Pages
 
