@@ -1,5 +1,8 @@
 # Changelog
 
+## 0.0.16 — 2026-06-06 15:32
+- change: Compléter la vue record et le menu
+
 ## 0.0.15 — 2026-06-06 15:21
 - doc: Ajouter le suivi kanban
 
