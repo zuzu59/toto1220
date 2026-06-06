@@ -1,64 +1,86 @@
 # Changelog
 
-## 0.0.16 — 2026-06-06 15:32
+All notable changes to this project will be documented in this file.
+
+The format is based on [Keep a Changelog](https://keepachangelog.com/fr/1.0.0/).
+
+## [Unreleased]
+
+## [0.0.16] - 2026-06-06
+### Changed
 - change: Compléter la vue record et le menu
 
-## 0.0.15 — 2026-06-06 15:21
+## [0.0.15] - 2026-06-06
+### Changed
 - doc: Ajouter le suivi kanban
 
-## 0.0.14 — 2026-06-06 14:19
+## [0.0.14] - 2026-06-06
+### Fixed
 - fixe: Rafraîchir About à chaque ouverture
 
-## 0.0.13 — 2026-06-06 14:10
+## [0.0.13] - 2026-06-06
+### Changed
 - change: Ajouter la copie des identifiants
 
-## 0.0.12 — 2026-06-06 14:02
+## [0.0.12] - 2026-06-06
+### Fixed
 - fixe: Corriger le verrouillage manuel
 
-## 0.0.11 — 2026-06-06 13:55
+## [0.0.11] - 2026-06-06
+### Fixed
 - fixe: Corriger le message de verrouillage
 
-## 0.0.10 — 2026-06-06 13:48
+## [0.0.10] - 2026-06-06
+### Changed
 - doc: Rendre le changelog lisible
 
-## 0.0.9 — 2026-06-06 13:40
+## [0.0.9] - 2026-06-06
+### Fixed
 - fixe: Corriger le déploiement GitHub Pages
 
-## 0.0.8 — 2026-06-06 13:34
+## [0.0.8] - 2026-06-06
+### Fixed
 - fixe: Centraliser les URLs GitHub
 
-## 0.0.7 — 2026-06-06 13:29
+## [0.0.7] - 2026-06-06
+### Fixed
 - fixe: Ajuster le retour de la page About
 - fixe: Régénérer la page About
 
-## 0.0.6 — 2026-06-06 13:24
+## [0.0.6] - 2026-06-06
+### Fixed
 - fixe: Rendre About plus robuste
 - fixe: Régénérer la page About
 
-## 0.0.5 — 2026-06-06 13:19
+## [0.0.5] - 2026-06-06
+### Fixed
 - fixe: Corriger la page About
 - fixe: Stabiliser la page About
 
-## 0.0.4 — 2026-06-06 13:13
+## [0.0.4] - 2026-06-06
+### Changed
 - doc: Décrire le flow de travail
 
-## 0.0.3 — 2026-06-06 13:11
+## [0.0.3] - 2026-06-06
+### Changed
 - change: Afficher un seul bouton de session
 
-## 0.0.2 — 2026-06-06 13:06
+## [0.0.2] - 2026-06-06
+### Changed
 - change: Ajouter la copie des mots de passe
 - change: Créer les releases GitHub
+
+### Fixed
 - fixe: Corriger la capture de version GitHub Actions
-- change: Ajouter les releases GitHub
-- change: Préparer le déploiement Pages
-- change: Implémenter la PWA de gestion
-- refact: améiorations du prompt
-- refact: refactorisation du readme
+
+## [0.0.1] - 2026-06-06
+### Added
 - new: 1ère création du cahier des charges
 
-## 0.0.1 — 2026-06-06
-- Base PWA mobile-first pour gérer les services.
-- CRUD records + tags.
-- Recherche full-text AND.
-- Chiffrement AES-GCM avec PBKDF2/SHA-256.
-- Import/export CSV et config JSON.
+### Changed
+- Initial commit
+- refact: refactorisation du readme
+- refact: améiorations du prompt
+- change: Implémenter la PWA de gestion
+- change: Préparer le déploiement Pages
+- change: Ajouter les releases GitHub

@@ -1,3 +1,5 @@
+* je veux que la hauteur des bouton du hamburger soit égale à la hauteur du texte du bouton
+* je veux que tu refactorises complètement et récursivement en te basant sur les détails des commits que tu as fait le changelog.md ET le changelog sur github (dans les releases) selon ces bonnes pratiques: https://keepachangelog.com/fr/1.0.0/
 * je veux un bouton copier sur l'adresse ip comme pour le password
 * je veux un champ user pour les champs ssh et html
 * je veux que quand les champs sont vides, il n'y a pas de bouton copier
