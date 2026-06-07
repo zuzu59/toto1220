@@ -6,6 +6,25 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/fr/1.0.0/).
 
 ## [Unreleased]
 
+## [0.0.22] - 2026-06-07 08:18
+### Changed
+- docs: synchroniser Pages 0.0.21
+  - Aligne la branche publiée avec la version 0.0.21 afin que GitHub Pages serve la bonne build.
+  - Le workflow de release est ignoré pour ce commit de synchronisation.
+  - Les artefacts docs/ et la version d’application sont mis à jour.
+
+### Fixed
+- fixe: Corriger About et synchroniser les releases
+  - Aligne la hauteur des boutons About, reconstruit l’historique du changelog et prépare la mise à jour des anciennes releases GitHub.
+  - Hauteur des boutons About calée sur le texte rendu.
+  - Changelog reconstruit avec le détail des commits depuis v0.0.17.
+  - Nouveau script de synchronisation des releases GitHub.
+  - Workflow de release enrichi pour publier et synchroniser les historiques.
+- fixe: Stabiliser le workflow de release
+  - Supprime la condition fragile sur le contenu du dernier commit pour éviter les échecs du workflow.
+  - Le workflow reste déclenché sur push et dispatch manuel.
+  - La garde se limite à l’actor GitHub Actions.
+
 ## [0.0.20] - 2026-06-06 16:42
 ### Fixed
 - fixe: Ajuster la hauteur des boutons About
@@ -230,4 +249,5 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/fr/1.0.0/).
   - Rebuild du dossier docs/ pour le déploiement Pages depuis une branche.
   - Création d’un tag vX.Y.Z.
   - Publication d’une release GitHub à partir du tag.
+
 
