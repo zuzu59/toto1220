@@ -15,5 +15,7 @@
 * je veux que tu vérifies visuellement la hauteur des boutons About sur la page publiée
 * je veux que tu complètes le changelog sur github avec les détails des anciennes versions
 * je veux que tu reconstruises le détail du changelog.md depuis la version 17 avec les messages des commits
+* je veux que la hauteur des boutons de about soit vérifiée visuellement sur la page publiée
+---
 
 
