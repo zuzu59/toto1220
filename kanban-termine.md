@@ -10,3 +10,10 @@
 * je veux que les releases GitHub soient utiles et détaillées
 * je veux que la hauteur des boutons dans About soit égale au texte à l'intérieur
 * je veux que tu arrêtes de toujours faire un commit 'change: bump version to 0.0.x'
+* je veux que la hauteur des boutons de about n'est toujours pas juste
+* je veux que les pages de déploiement et actions GitHub n'aient plus d'erreurs
+* je veux que tu vérifies visuellement la hauteur des boutons About sur la page publiée
+* je veux que tu complètes le changelog sur github avec les détails des anciennes versions
+* je veux que tu reconstruises le détail du changelog.md depuis la version 17 avec les messages des commits
+
+
