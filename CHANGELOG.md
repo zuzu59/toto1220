@@ -6,6 +6,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/fr/1.0.0/).
 
 ## [Unreleased]
 
+## [0.0.25] - 2026-06-07 08:44
+### Fixed
+- fixe: Affiner la hauteur About
+  - Réduit la hauteur des boutons About après vérification visuelle dans le navigateur.
+  - Padding vertical supprimé.
+  - Vérification sur capture de la page publiée.
+  - Kanban déplacé au fur et à mesure.
+
 ## [0.0.24] - 2026-06-07 08:23
 ### Changed
 - change: Mettre à jour le kanban
@@ -254,6 +262,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/fr/1.0.0/).
   - Rebuild du dossier docs/ pour le déploiement Pages depuis une branche.
   - Création d’un tag vX.Y.Z.
   - Publication d’une release GitHub à partir du tag.
+
 
 
 
