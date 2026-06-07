@@ -6,6 +6,20 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/fr/1.0.0/).
 
 ## [Unreleased]
 
+## [0.0.26] - 2026-06-07 17:22
+### Fixed
+- fixe: Ajuster About visuellement
+  - Réduit vraiment la hauteur des boutons About en vérifiant le rendu dans le navigateur.
+  - Padding vertical supprimé sur les boutons About.
+  - Vérification visuelle sur la page publiée via capture navigateur.
+  - Mise à jour du kanban au fil de l’eau.
+- fixe: Ajouter la vérification visuelle
+  - Ajoute un skill projet pour forcer la vérification visuelle avant déploiement et un script local de capture Chromium.
+  - Le skill interdit de valider uniquement avec le DOM.
+  - Le script permet de tester la page About en local avec capture navigateur.
+  - La hauteur About est vérifiée visuellement avant publication.
+  - Le kanban est mis à jour.
+
 ## [0.0.25] - 2026-06-07 08:44
 ### Fixed
 - fixe: Affiner la hauteur About
@@ -262,6 +276,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/fr/1.0.0/).
   - Rebuild du dossier docs/ pour le déploiement Pages depuis une branche.
   - Création d’un tag vX.Y.Z.
   - Publication d’une release GitHub à partir du tag.
+
 
 
 
