@@ -56,10 +56,8 @@ button, input, textarea { font: inherit; }
   align-self: start;
   width: fit-content;
   min-height: 0;
-  height: 1em;
-  padding: 0 0.75rem;
+  padding: 0.5px 0.75rem;
   line-height: 1;
-  overflow: hidden;
 }
 .primary-button:disabled, .ghost-button:disabled { opacity: 0.5; cursor: not-allowed; }
 .search-input, .text-input {

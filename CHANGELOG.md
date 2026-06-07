@@ -7,16 +7,30 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/fr/1.0.0/).
 ## [Unreleased]
 
 ## [0.0.20] - 2026-06-06 16:42
-### Changed
-- Mise à jour de maintenance.
+### Fixed
+- fixe: Ajuster la hauteur des boutons About
+  - Supprime le surplus vertical des boutons About pour coller au texte visible.
+  - Les boutons About n’ont plus de padding vertical.
+  - La hauteur dépend désormais du texte et non de l’espace interne.
+  - Rebuild du dossier docs/ pour GitHub Pages.
 
 ## [0.0.19] - 2026-06-06 16:36
-### Changed
-- Mise à jour de maintenance.
+### Fixed
+- fixe: Detallier les releases et About
+  - Ameliore les notes de release GitHub et compacte les boutons About.
+  - Les releases GitHub affichent maintenant les hashes et le détail des commits.
+  - Le script de bump génère aussi un fichier de release plus utile.
+  - Les boutons About ont une hauteur calée sur le texte.
+  - Le suivi kanban est mis à jour.
 
-## [0.0.18] - 2026-06-06
+## [0.0.18] - 2026-06-06 16:25
 ### Changed
-- Mise à jour de maintenance.
+- doc: Detailler le changelog
+  - Ajoute l’heure aux entrées du changelog et affiche désormais le détail des commits sous chaque version.
+  - Date au format date + heure dans les titres de version.
+  - Récupération du corps des commits pour détailler chaque entrée.
+  - Génération cohérente pour le changelog et les notes de release.
+  - Mise à jour progressive du kanban.
 
 ## [0.0.17] - 2026-06-06 16:16
 ### Changed
@@ -216,7 +230,4 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/fr/1.0.0/).
   - Rebuild du dossier docs/ pour le déploiement Pages depuis une branche.
   - Création d’un tag vX.Y.Z.
   - Publication d’une release GitHub à partir du tag.
-
-
-
 

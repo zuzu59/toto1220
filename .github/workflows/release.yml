@@ -3,13 +3,14 @@ name: Bump version and tag
 on:
   push:
     branches: [master]
+  workflow_dispatch:
 
 permissions:
   contents: write
 
 jobs:
   bump:
-    if: github.actor != 'github-actions[bot]' && !contains(github.event.head_commit.message, 'docs: synchroniser Pages')
+    if: github.actor != 'github-actions[bot]' && !(github.event_name == 'push' && contains(github.event.head_commit.message, 'docs: synchroniser Pages'))
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -50,3 +51,8 @@ jobs:
           name: v${{ steps.version.outputs.version }}
           body_path: RELEASE_NOTES.md
           generate_release_notes: false
+      - name: Synchronize release history
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
+        run: node scripts/sync-github-releases.mjs
