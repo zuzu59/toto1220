@@ -6,6 +6,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/fr/1.0.0/).
 
 ## [Unreleased]
 
+## [0.0.23] - 2026-06-07 08:22
+### Changed
+- doc: Mettre à jour le kanban
+  - Déplace les tâches terminées dans kanban-termine.md et vide kanban-a-faire.md pour refléter l’avancement réel.
+
 ## [0.0.22] - 2026-06-07 08:18
 ### Changed
 - docs: synchroniser Pages 0.0.21
@@ -249,5 +254,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/fr/1.0.0/).
   - Rebuild du dossier docs/ pour le déploiement Pages depuis une branche.
   - Création d’un tag vX.Y.Z.
   - Publication d’une release GitHub à partir du tag.
+
 
 
