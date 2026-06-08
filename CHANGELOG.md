@@ -6,6 +6,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/fr/1.0.0/).
 
 ## [Unreleased]
 
+## [0.0.27] - 2026-06-08 16:38
+### Changed
+- change: publier la version 0.0.27
+
+### Fixed
+- fixe: corriger la sauvegarde des records verrouillés
+
 ## [0.0.27] - 2026-06-08 16:35
 ### Fixed
 - fixe: corriger la sauvegarde des records verrouillés
@@ -297,6 +304,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/fr/1.0.0/).
   - Rebuild du dossier docs/ pour le déploiement Pages depuis une branche.
   - Création d’un tag vX.Y.Z.
   - Publication d’une release GitHub à partir du tag.
+
 
 
 
