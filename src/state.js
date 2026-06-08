@@ -5,6 +5,14 @@ import { base64ToBytes, bytesToBase64, decryptText, deriveAesKey, encryptText, e
 
 const SECRET_FIELDS = ['ssh1Password', 'ssh2Password', 'html1Password', 'html2Password']
 
+function cloneSecretPayload(payload) {
+  if (!payload) return null
+  return {
+    iv: payload.iv,
+    data: payload.data
+  }
+}
+
 export const state = reactive({
   ready: false,
   loading: true,
@@ -177,10 +185,10 @@ async function decryptIfNeeded(payload) {
 export function getSecretPayloads(record) {
   const item = normalizeRecord(record)
   return {
-    ssh1Password: item.ssh1Password,
-    ssh2Password: item.ssh2Password,
-    html1Password: item.html1Password,
-    html2Password: item.html2Password
+    ssh1Password: cloneSecretPayload(item.ssh1Password),
+    ssh2Password: cloneSecretPayload(item.ssh2Password),
+    html1Password: cloneSecretPayload(item.html1Password),
+    html2Password: cloneSecretPayload(item.html2Password)
   }
 }
 
@@ -202,10 +210,10 @@ export async function saveRecord(form, previousSecrets = {}) {
   const payload = normalizeRecord(form)
   const record = {
     ...payload,
-    ssh1Password: state.unlocked ? await encryptIfNeeded(form.ssh1Password) : previousSecrets.ssh1Password || null,
-    ssh2Password: state.unlocked ? await encryptIfNeeded(form.ssh2Password) : previousSecrets.ssh2Password || null,
-    html1Password: state.unlocked ? await encryptIfNeeded(form.html1Password) : previousSecrets.html1Password || null,
-    html2Password: state.unlocked ? await encryptIfNeeded(form.html2Password) : previousSecrets.html2Password || null,
+    ssh1Password: state.unlocked ? await encryptIfNeeded(form.ssh1Password) : cloneSecretPayload(previousSecrets.ssh1Password),
+    ssh2Password: state.unlocked ? await encryptIfNeeded(form.ssh2Password) : cloneSecretPayload(previousSecrets.ssh2Password),
+    html1Password: state.unlocked ? await encryptIfNeeded(form.html1Password) : cloneSecretPayload(previousSecrets.html1Password),
+    html2Password: state.unlocked ? await encryptIfNeeded(form.html2Password) : cloneSecretPayload(previousSecrets.html2Password),
     modifiedAt: now()
   }
 

@@ -4,4 +4,5 @@ dist
 .env
 .env.*
 RELEASE_NOTES.md
+copies-d-ecrans/
 .claude/output

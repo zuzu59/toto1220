@@ -69,7 +69,6 @@ watch(
 <template>
   <div class="app-shell" @pointerdown="touchActivity">
     <header class="topbar">
-      <button class="icon-button" type="button" @click="handleMenu" aria-label="Menu">☰</button>
       <button class="brand" type="button" @click="goHome">Z-Services</button>
       <input
         v-if="isRecordsPage"
@@ -84,6 +83,7 @@ watch(
         <button v-else class="primary-button" type="button" @click="openUnlock">Déverrouiller</button>
         <RouterLink v-if="isRecordsPage" class="primary-button" to="/records/new">+ Nouveau</RouterLink>
       </div>
+      <button class="icon-button menu-button" type="button" @click="handleMenu" aria-label="Menu">☰</button>
     </header>
 
     <div v-if="state.drawerOpen" class="drawer-overlay" @click="closeDrawer"></div>

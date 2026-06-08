@@ -17,6 +17,12 @@
 * je veux que tu reconstruises le détail du changelog.md depuis la version 17 avec les messages des commits
 * je veux que la hauteur des boutons de about soit vérifiée visuellement sur la page publiée
 * je veux un nouveau Skill pour toujours vérifier visuellement avant de déployer
+* je veux que le hamburger soit à droite
+* je veux que les boutons du hamburger soient alignés en haut
+* je veux que les boutons du hamburger soient plus visibles
+* je veux n’utiliser que le port 4173
+* je veux que le dossier copies-d’ecrans soit dans le gitignore
+* je veux que le titre Z-Services ne se wrap pas à cause de la fenêtre de recherche
 ---
 
 
