@@ -323,9 +323,13 @@ export function searchRecords(records, query, tags) {
       record.description,
       tagText,
       record.ssh1String,
+      record.ssh1User,
       record.ssh2String,
+      record.ssh2User,
       record.html1String,
+      record.html1User,
       record.html2String,
+      record.html2User,
       record.note,
       formatDate(record.createdAt),
       formatDate(record.modifiedAt)
