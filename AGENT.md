@@ -8,25 +8,26 @@
 4. Vérifier / builder le projet.
 5. Faire une vérification visuelle locale dans Chromium avant toute publication UI.
 6. Faire un commit atomique.
-7. Pousser immédiatement sur GitHub.
-8. Générer / conserver le build statique dans `docs/` pour GitHub Pages.
-9. Quand `kanban-a-faire.md` est vide, faire un commit et pousser pour déclencher le déploiement.
+7. Pousser immédiatement sur GitHub si le changement doit être partagé.
+8. Garder le projet prêt pour un déploiement manuel vers GitHub Pages.
+9. Déployer seulement quand cela est demandé explicitement.
 
 ## Règles du projet
 
-- Toujours pousser sur `master` pour permettre le test direct sur GitHub Pages.
-- Le déploiement GitHub Pages se fait en mode **Deploy from branch**.
-- Le dossier publié est `docs/`.
+- Toujours pousser sur `master` pour le code source.
+- GitHub Pages doit utiliser la branche `gh-pages` comme source de publication.
+- Le dossier publié est `docs/` avant export vers `gh-pages`.
 - Chaque commit doit être atomique et en français.
 - Préfixes de commit autorisés : `new`, `change`, `fixe`, `refact`, `del`.
 - Après une modification utile, ne pas attendre : commit + push.
 - Conserver la version affichée en bas de l’application.
 - N’incrémenter la version que si l’application buildée change réellement.
-- Un changement de documentation, prompt, kanban ou notes peut être poussé sans bump de version ni redéploiement applicatif.
+- Un changement de documentation, prompt, kanban ou notes peut être poussé sans bump de version ni déploiement.
 - Si le workflow de version/release casse, corriger le workflow avant de continuer.
 - Le serveur local de dev / validation doit rester sur le port `4173`.
 - Fermer tout autre serveur web concurrent sur `4174` ou autre port similaire avant validation.
 - Ne jamais valider une UI sur le DOM seul : la preuve visuelle locale est obligatoire.
+- Les déploiements GitHub Pages doivent être lancés manuellement.
 
 ## Avant de finir une tâche
 
