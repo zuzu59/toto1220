@@ -77,3 +77,10 @@ jobs:
           name: v${{ steps.version.outputs.version }}
           body_path: /tmp/release-notes.md
           generate_release_notes: false
+      - name: Deploy GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_branch: gh-pages
+          publish_dir: ./docs
+          force_orphan: true
