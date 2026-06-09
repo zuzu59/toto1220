@@ -16,10 +16,10 @@
 
 - Toujours pousser sur `master` pour le code source.
 - GitHub Pages doit utiliser la branche `gh-pages` comme source de publication.
-- Le dossier publié est `docs/` avant export vers `gh-pages`.
+- Le build statique est généré temporairement pour le déploiement manuel vers `gh-pages`.
 - Chaque commit doit être atomique et en français.
 - Préfixes de commit autorisés : `new`, `change`, `fixe`, `refact`, `del`.
-- Après une modification utile, ne pas attendre : commit + push.
+- Après une modification utile, ne pas attendre : commit + push si le changement doit être partagé.
 - Conserver la version affichée en bas de l’application.
 - N’incrémenter la version que si l’application buildée change réellement.
 - Un changement de documentation, prompt, kanban ou notes peut être poussé sans bump de version ni déploiement.
