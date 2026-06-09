@@ -25,7 +25,9 @@ function gotoPage(nextPage) {
 }
 
 function recordSummary(record) {
-  return [record.serviceName, record.ip, record.url, record.description, record.note].filter(Boolean).join(' · ')
+  return [record.serviceName, record.ip, record.url, record.description, getRecordTags(record).map((tag) => tag.name).join(', '), record.note]
+    .filter(Boolean)
+    .join(' · ')
 }
 
 watch(
