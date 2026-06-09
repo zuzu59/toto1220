@@ -1,6 +1,19 @@
 import { db } from './db'
 import { APP_VERSION } from '../constants'
 
+function pad2(value) {
+  return String(value).padStart(2, '0')
+}
+
+export function formatExportTimestamp(date = new Date()) {
+  const year = pad2(date.getFullYear() % 100)
+  const month = pad2(date.getMonth() + 1)
+  const day = pad2(date.getDate())
+  const hours = pad2(date.getHours())
+  const minutes = pad2(date.getMinutes())
+  return `${year}${month}${day}.${hours}${minutes}`
+}
+
 function csvEscape(value) {
   const text = value == null ? '' : String(value)
   if (/[",\n\r]/.test(text)) {

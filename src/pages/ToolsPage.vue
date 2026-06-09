@@ -1,6 +1,6 @@
 <script setup>
 import { ref } from 'vue'
-import { exportConfigJson, exportDatabaseCsv, importConfigJson, importDatabaseCsv } from '../services/backup'
+import { exportConfigJson, exportDatabaseCsv, formatExportTimestamp, importConfigJson, importDatabaseCsv } from '../services/backup'
 import { loadApp, resetAndImportDatabase, state } from '../state'
 
 const csvInput = ref(null)
@@ -23,7 +23,7 @@ async function handleExportCsv() {
   message.value = ''
   try {
     const csv = await exportDatabaseCsv()
-    download(`z-services-backup-${Date.now()}.csv`, csv, 'text/csv')
+    download(`z-services-backup-${formatExportTimestamp()}.csv`, csv, 'text/csv')
     message.value = 'Export CSV généré.'
   } finally {
     busy.value = false
@@ -34,7 +34,7 @@ async function handleExportConfig() {
   busy.value = true
   message.value = ''
   try {
-    download(`z-services-config-${Date.now()}.json`, exportConfigJson(state.settings), 'application/json')
+    download(`z-services-config-${formatExportTimestamp()}.json`, exportConfigJson(state.settings), 'application/json')
     message.value = 'Configuration exportée.'
   } finally {
     busy.value = false

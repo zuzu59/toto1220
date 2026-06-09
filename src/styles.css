@@ -95,10 +95,14 @@ button, input, textarea { font: inherit; }
 .cards-list { display: grid; gap: 0.75rem; }
 .mini-card { display: flex; justify-content: space-between; align-items: center; gap: 1rem; }
 .table-wrap { overflow-x: auto; border-radius: 1rem; border: 1px solid rgba(148, 163, 184, 0.15); }
-.data-table { width: 100%; border-collapse: collapse; background: rgba(15, 23, 42, 0.9); }
-.data-table th, .data-table td { padding: 0.85rem; border-bottom: 1px solid rgba(148, 163, 184, 0.12); text-align: left; vertical-align: top; }
-.data-table th button { background: transparent; border: 0; color: #e2e8f0; font-weight: 700; padding: 0; }
-.record-link { font-weight: 700; }
+.records-page .table-wrap { border-color: rgba(148, 163, 184, 0.28); }
+.records-page .data-table { width: 100%; border-collapse: collapse; background: rgba(15, 23, 42, 0.98); }
+.records-page .data-table th, .records-page .data-table td { padding: 0.92rem 0.9rem; border-bottom: 1px solid rgba(148, 163, 184, 0.24); text-align: left; vertical-align: top; color: #f8fafc; }
+.records-page .data-table th { background: rgba(30, 41, 59, 0.96); position: sticky; top: 0; z-index: 1; }
+.records-page .data-table th button { background: transparent; border: 0; color: #f8fafc; font-weight: 800; padding: 0; }
+.records-page .data-table tbody tr:hover { background: rgba(56, 189, 248, 0.08); }
+.record-link { font-weight: 800; color: #7dd3fc; }
+.records-page .muted { color: #cbd5e1; }
 .muted, .notice { color: var(--muted); }
 .notice { margin-bottom: 1rem; padding: 0.75rem 1rem; border-radius: 0.75rem; background: rgba(56, 189, 248, 0.08); border: 1px solid rgba(56, 189, 248, 0.2); }
 .warning-text { color: #fbbf24; }
@@ -238,9 +242,34 @@ button, input, textarea { font: inherit; }
   cursor: pointer;
 }
 @media (max-width: 900px) {
-  .topbar { flex-wrap: wrap; }
-  .actions { width: 100%; margin-left: 0; }
-  .search-input { order: 10; }
+  .topbar {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    grid-template-areas:
+      'brand actions menu'
+      'search search search';
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .brand { grid-area: brand; }
+  .actions {
+    grid-area: actions;
+    margin-left: 0;
+    width: 100%;
+    flex: 0 1 auto;
+    flex-wrap: nowrap;
+    gap: 0.25rem;
+    min-width: 0;
+    overflow: hidden;
+  }
+  .actions .ghost-button,
+  .actions .primary-button {
+    padding: 0.34rem 0.45rem;
+    font-size: 0.78rem;
+    white-space: nowrap;
+  }
+  .menu-button { grid-area: menu; }
+  .search-input { grid-area: search; width: 100%; min-width: 0; }
   .edit-grid { grid-template-columns: 1fr; }
   .mini-card { flex-direction: column; align-items: stretch; }
 }

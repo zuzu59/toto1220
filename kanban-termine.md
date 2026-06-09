@@ -23,6 +23,9 @@
 * je veux n’utiliser que le port 4173
 * je veux que le dossier copies-d’ecrans soit dans le gitignore
 * je veux que le titre Z-Services ne se wrap pas à cause de la fenêtre de recherche
+* je veux que les fichiers exportés soient nommés avec la date yymmdd.hhmm
+* je veux que le hamburger reste à droite sur mobile vertical avec la recherche sur une ligne à part
+* je veux améliorer les contrastes de la page principale sur mobile au soleil
 ---
 
 

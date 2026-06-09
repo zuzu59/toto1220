@@ -6,6 +6,19 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/fr/1.0.0/).
 
 ## [Unreleased]
 
+## [0.0.30] - 2026-06-09 16:43
+### Changed
+- change: séparer le déploiement de la branche principale
+
+### Fixed
+- fixe: éviter le bump sur les commits docs
+- fixe: nommer les exports CSV et JSON avec un timestamp lisible `yymmdd.hhmm`
+- fixe: garder le hamburger à droite sur mobile vertical avec la recherche sur une ligne dédiée
+- fixe: améliorer le contraste de la page Records sur mobile et en plein soleil
+
+### Removed
+- del: supprimer le dossier docs du dépôt
+
 ## [0.0.29] - 2026-06-09 16:11
 ### Changed
 - doc: préciser le workflow agent
@@ -312,6 +325,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/fr/1.0.0/).
   - Rebuild du dossier docs/ pour le déploiement Pages depuis une branche.
   - Création d’un tag vX.Y.Z.
   - Publication d’une release GitHub à partir du tag.
+
 
 
 

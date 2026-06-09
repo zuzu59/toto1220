@@ -37,7 +37,7 @@ watch(
 </script>
 
 <template>
-  <section class="page">
+  <section class="page records-page">
     <div class="page-head">
       <h1>Records</h1>
       <p>{{ filtered.length }} résultat(s)</p>
