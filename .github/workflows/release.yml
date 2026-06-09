@@ -34,23 +34,38 @@ jobs:
           node-version: 20
           cache: npm
       - name: Install
-        run: npm install
-      - name: Bump version
-        run: npm run version:bump
+        run: npm ci
       - name: Build docs
         run: npm run build
-      - name: Capture version
+      - name: Compute release version and notes
         id: version
         run: |
-          VERSION=$(node -p "require('./package.json').version")
+          node --input-type=module <<'NODE'
+          import { readFileSync, writeFileSync } from 'node:fs'
+          const utils = await import('./scripts/changelog-utils.mjs')
+          const pkg = JSON.parse(readFileSync('./package.json', 'utf8'))
+          const parse = (value) => String(value || '0.0.0').replace(/^v/, '').split('.').map((part) => Number(part) || 0)
+          const compare = (left, right) => {
+            for (let index = 0; index < 3; index += 1) {
+              if (left[index] !== right[index]) return left[index] - right[index]
+            }
+            return 0
+          }
+          const latestTag = utils.getLatestVersionTag()
+          const currentVersion = parse(pkg.version)
+          const latestVersion = parse(latestTag)
+          const baseVersion = compare(currentVersion, latestVersion) >= 0 ? currentVersion : latestVersion
+          const nextVersion = `${baseVersion[0]}.${baseVersion[1]}.${baseVersion[2] + 1}`
+          const now = new Date().toISOString().replace('T', ' ').slice(0, 16)
+          const range = latestTag ? `${latestTag}..HEAD` : 'HEAD'
+          const commits = utils.getCommits(range)
+          const notes = utils.buildGithubReleaseNotes(nextVersion, now, commits.length ? commits : [{ subject: 'Mise à jour de maintenance.', body: '' }])
+          writeFileSync('/tmp/release-notes.md', `${notes}\n`)
+          writeFileSync('/tmp/release-version.txt', `${nextVersion}\n`)
+          console.log(`version=${nextVersion}`)
+          NODE
+          VERSION=$(cat /tmp/release-version.txt)
           echo "version=$VERSION" >> "$GITHUB_OUTPUT"
-      - name: Commit publication
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add -A package.json package-lock.json CHANGELOG.md docs
-          git commit -m "docs: publier la version ${{ steps.version.outputs.version }}" -m "Publication automatique de la version, génération des docs et préparation de la release."
-          git push origin HEAD:${{ github.ref_name }}
       - name: Push tag
         run: |
           git tag "v${{ steps.version.outputs.version }}"
@@ -60,10 +75,5 @@ jobs:
         with:
           tag_name: v${{ steps.version.outputs.version }}
           name: v${{ steps.version.outputs.version }}
-          body_path: RELEASE_NOTES.md
+          body_path: /tmp/release-notes.md
           generate_release_notes: false
-      - name: Synchronize release history
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          GITHUB_REPOSITORY: ${{ github.repository }}
-        run: node scripts/sync-github-releases.mjs
