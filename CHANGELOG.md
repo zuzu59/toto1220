@@ -6,6 +6,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/fr/1.0.0/).
 
 ## [Unreleased]
 
+## [0.0.29] - 2026-06-09 16:11
+### Changed
+- doc: préciser le workflow agent
+
 ## [0.0.28] - 2026-06-08 17:49
 ### Changed
 - doc: enrichir le prompt de référence
@@ -308,6 +312,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/fr/1.0.0/).
   - Rebuild du dossier docs/ pour le déploiement Pages depuis une branche.
   - Création d’un tag vX.Y.Z.
   - Publication d’une release GitHub à partir du tag.
+
 
 
 
