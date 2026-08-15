@@ -24,7 +24,7 @@ export async function ensureSeedData() {
       theme: 'dark',
       masterSalt: null,
       githubUser: 'zuzu59',
-      githubRepo: 'toto1220',
+      githubRepo: 'z-services',
       createdAt: Date.now(),
       updatedAt: Date.now()
     })

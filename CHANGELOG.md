@@ -6,6 +6,18 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/fr/1.0.0/).
 
 ## [Unreleased]
 
+## [0.0.32] - 2026-08-14 12:15
+### Changed
+- change: bump version to 0.0.32 to confirm rename from toto1220 to z-services
+
+## [0.0.31] - 2026-08-14 12:06
+### Changed
+- change: renommer le dépôt GitHub de toto1220 à z-services
+
+### Fixed
+- fixe: synchroniser toutes les références GitHub (vite.config, db, constants) vers z-services
+- fixe: corriger navigateFallback PWA vers /z-services/
+
 ## [0.0.30] - 2026-06-09 16:43
 ### Changed
 - change: séparer le déploiement de la branche principale

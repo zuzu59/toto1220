@@ -1,6 +1,6 @@
 export const APP_VERSION = typeof __APP_VERSION__ === 'string' ? __APP_VERSION__ : '0.0.1'
 export const GITHUB_OWNER = typeof __GITHUB_USER__ === 'string' ? __GITHUB_USER__ : 'zuzu59'
-export const GITHUB_REPO = typeof __GITHUB_REPO__ === 'string' ? __GITHUB_REPO__ : 'toto1220'
+export const GITHUB_REPO = typeof __GITHUB_REPO__ === 'string' ? __GITHUB_REPO__ : 'z-services'
 export const GITHUB_REPO_URL = `https://github.com/${GITHUB_OWNER}/${GITHUB_REPO}`
 export const GITHUB_PROFILE_URL = `https://github.com/${GITHUB_OWNER}`
 export const GITHUB_RELEASES_URL = `${GITHUB_REPO_URL}/releases`
