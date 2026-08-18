@@ -1,6 +1,6 @@
-name: Bump version and tag
+name: Bump version and tag (DISABLED)
 
-on:
+# on:
   push:
     branches: [master]
     paths-ignore:
