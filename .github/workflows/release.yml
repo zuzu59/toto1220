@@ -1,20 +1,7 @@
 name: Bump version and tag (DISABLED)
 
-# on:
-#   push:
-#     branches: [master]
-#     paths-ignore:
-#       - AGENT.md
-#       - PROMPT.md
-#       - PROMPT-2.md
-#       - kanban-a-faire.md
-#       - kanban-termine.md
-#       - README.md
-#       - CHANGELOG.md
-#       - RELEASE_NOTES.md
-#       - .claude/**
-#       - .github/workflows/**
-#   workflow_dispatch:
+on:
+  workflow_dispatch: # bump 100% manuel (npm run version:bump), plus de déclenchement automatique
 
 permissions:
   contents: write
